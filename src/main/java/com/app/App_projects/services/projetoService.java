@@ -1,9 +1,6 @@
 package com.app.App_projects.services;
 
-import com.app.App_projects.domain.participantes.Participantes;
 import com.app.App_projects.domain.projetos.Projetos;
-import com.app.App_projects.repository.projetosRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

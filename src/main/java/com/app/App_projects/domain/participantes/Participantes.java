@@ -22,16 +22,16 @@ public class Participantes {
     private String id;
 
     @Column(name="nome")
-    private String nome;
+    private String name;
 
     @Column(name="descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
     @Column(name="redesList")
     private List<Redes> redesList;
 
-    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
     @Column(name="projetosList")
     private List<Projetos> projetosList;
 }

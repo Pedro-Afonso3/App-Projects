@@ -28,6 +28,6 @@ public class Projetos {
     private String tecnologias;//Achei melhor colocar assim, porque nem smp será uma linguagem pode ser um framework
 
     @ManyToOne
-    @JoinColumn(name="participantes_id",nullable = false)
+    @JoinColumn(name="participantes_id")
     private Participantes participantes;
 }
