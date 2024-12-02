@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
+
 public interface participantesService {
 
     void insertParticipantes(Participantes participantes);

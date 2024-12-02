@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Service
+
 public interface redesService {
 
     void insertRedes(Redes redes);

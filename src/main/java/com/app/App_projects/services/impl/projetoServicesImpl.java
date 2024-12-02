@@ -4,11 +4,13 @@ import com.app.App_projects.domain.projetos.Projetos;
 import com.app.App_projects.repository.projetosRepository;
 import com.app.App_projects.services.projetoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class projetoServicesImpl implements projetoService {
 
     @Autowired
@@ -64,7 +66,7 @@ public class projetoServicesImpl implements projetoService {
 
     @Override
     public Optional<Projetos> findByTitulo(String titulo) {
-        Optional<Projetos> resultShowTitulo = repository.findByName(titulo);
+        Optional<Projetos> resultShowTitulo = repository.findByTitulo(titulo);
         return resultShowTitulo;
     }
 }
