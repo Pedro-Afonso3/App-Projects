@@ -1,9 +1,6 @@
 package com.app.App_projects.controller;
 
-import com.app.App_projects.domain.participantes.Participantes;
 import com.app.App_projects.domain.projetos.Projetos;
-import com.app.App_projects.services.participantesService;
-import com.app.App_projects.services.projetoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +13,7 @@ import java.util.UUID;
 public class projetoController {
 
     @Autowired
-    projetoService projetoService;
+    com.app.App_projects.services.projetoService projetoService;
 
     @GetMapping("/showAll")
     public ResponseEntity<Iterable<Projetos>> showAllProjetos(){

@@ -1,6 +1,5 @@
 package com.app.App_projects.services.impl;
 
-import com.app.App_projects.domain.participantes.Participantes;
 import com.app.App_projects.domain.projetos.Projetos;
 import com.app.App_projects.repository.projetosRepository;
 import com.app.App_projects.services.projetoService;

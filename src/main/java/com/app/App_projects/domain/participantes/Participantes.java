@@ -12,7 +12,9 @@ import java.util.List;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Setter
+@EqualsAndHashCode(of = "id")// Provavelmente não precisa
 public class Participantes {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -25,9 +27,11 @@ public class Participantes {
     @Column(name="descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @Column(name="redesList")
     private List<Redes> redesList;
 
-    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @Column(name="projetosList")
     private List<Projetos> projetosList;
 }
