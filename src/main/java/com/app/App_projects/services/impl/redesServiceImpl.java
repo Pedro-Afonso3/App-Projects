@@ -29,8 +29,8 @@ public class redesServiceImpl implements redesService {
         if (redes1.isPresent()) {
             Redes redesExists = redes1.get();
 
-            if (redes.getName() != null) {
-                redesExists.setName(redes.getName());
+            if (redes.getNome() != null) {
+                redesExists.setNome(redes.getNome());
             }
 
             if (redes.getLinkRedes() != null) {
@@ -62,8 +62,8 @@ public class redesServiceImpl implements redesService {
     }
 
     @Override
-    public Optional<Redes> findByName(String name) {
-        Optional<Redes> resultShowName = repository.findByName(name);
+    public Optional<Redes> findByNome(String nome) {
+        Optional<Redes> resultShowName = repository.findByNome(nome);
         return resultShowName;
     }
 }

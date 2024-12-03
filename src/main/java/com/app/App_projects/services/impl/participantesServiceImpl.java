@@ -29,8 +29,8 @@ public class participantesServiceImpl implements participantesService {
         if (participantes1.isPresent()) {
             Participantes participantesExists = participantes1.get();
 
-            if (participantes.getName() != null) {
-                participantesExists.setName(participantes.getName());
+            if (participantes.getNome() != null) {
+                participantesExists.setNome(participantes.getNome());
             }
 
             if(participantes.getDescricao() != null){
@@ -74,8 +74,8 @@ public class participantesServiceImpl implements participantesService {
     }
 
     @Override
-    public  Optional<Participantes>  findByName(String name) {
-        Optional<Participantes> resultShowName = repository.findByName(name);
+    public  Optional<Participantes> findByNome(String nome) {
+        Optional<Participantes> resultShowName = repository.findByNome(nome);
         return resultShowName;
 
     }

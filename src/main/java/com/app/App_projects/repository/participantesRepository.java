@@ -9,5 +9,5 @@ import java.util.UUID;
 
 public interface participantesRepository extends JpaRepository<Participantes, UUID> {
 
-    Optional<Participantes> findByName(String name);
+    Optional<Participantes> findByNome(String nome);
 }

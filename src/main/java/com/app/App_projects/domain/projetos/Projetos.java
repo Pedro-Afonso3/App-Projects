@@ -9,13 +9,11 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Setter
-@EqualsAndHashCode(of = "id")// Provavelmente não precisa
 public class Projetos {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name="projetos_id")
     private String id;
 
     @Column(name="titulo")

@@ -1,14 +1,11 @@
 package com.app.App_projects.controller;
 
 import com.app.App_projects.domain.participantes.Participantes;
-import com.app.App_projects.services.impl.participantesServiceImpl;
 import com.app.App_projects.services.participantesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Iterator;
-import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -29,9 +26,9 @@ public class participantesController {
         return ResponseEntity.ok(participantesService.showById(id));
     }
 
-    @GetMapping("/findByName")
-    public ResponseEntity<Optional<Participantes>> findByName(String name){
-        return ResponseEntity.ok(participantesService.findByName(name));
+    @GetMapping("/findByNome")
+    public ResponseEntity<Optional<Participantes>> findByNome(String nome){
+        return ResponseEntity.ok(participantesService.findByNome(nome));
     }
 
     @PutMapping("/updateParticipantes")

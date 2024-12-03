@@ -10,7 +10,6 @@ import lombok.*;
 @AllArgsConstructor
 @Builder
 @Setter
-@EqualsAndHashCode(of = "id")// Provavelmente não precisa
 public class Users {
 
     @Id

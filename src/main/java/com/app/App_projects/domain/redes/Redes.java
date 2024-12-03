@@ -9,13 +9,11 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Setter
-@EqualsAndHashCode(of = "id")// Provavelmente não precisa
 public class Redes {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name="redes_id")
     private String id;
 
     @Column(name="nome")
@@ -27,6 +25,5 @@ public class Redes {
     @ManyToOne
     @JoinColumn(name="participantes_id",nullable = false)
     private Participantes participantes;
-
 
 }
