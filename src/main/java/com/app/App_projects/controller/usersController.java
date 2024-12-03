@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @RestController
-@RequestMapping("/users")
+@RequestMapping("/users") // PROVAVELMENTE NÃO VAI SER UTIL DELETAR SE NECESSÁRIO
 public class usersController {
 
     @Autowired
