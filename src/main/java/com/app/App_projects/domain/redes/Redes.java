@@ -17,7 +17,7 @@ public class Redes {
     private String id;
 
     @Column(name="nome")
-    private String name;
+    private String nome;
 
     @Column(name="linkRedes")
     private String linkRedes;

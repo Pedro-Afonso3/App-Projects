@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("auth")
 public class AuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -44,7 +44,7 @@ public class AuthenticationController {
         if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
 
         String encrytedPassword = new BCryptPasswordEncoder().encode(data.password());
-        Users newUser = new Users(data.login(),encrytedPassword, data.users().getRole());
+        Users newUser = new Users(data.login(),encrytedPassword, data.role());
 
         this.repository.save(newUser);
         return ResponseEntity.ok().build();

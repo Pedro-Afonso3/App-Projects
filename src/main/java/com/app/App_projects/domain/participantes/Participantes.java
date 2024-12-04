@@ -27,11 +27,11 @@ public class Participantes {
     @Column(name="descricao")
     private String descricao;
 
-    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
     @Column(name="redesList")
     private List<Redes> redesList;
 
-    @OneToMany(mappedBy = "Participantes",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
     @Column(name="projetosList")
     private List<Projetos> projetosList;
 }
