@@ -12,6 +12,7 @@ import java.util.List;
 public class ParticipantesDTO implements Serializable {
     private String nome;
     private String descricao;
+    private Long codParticipante;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Projetos> projetosList;
@@ -50,5 +51,13 @@ public class ParticipantesDTO implements Serializable {
 
     public void setRedesList(List<Redes> redesList) {
         this.redesList = redesList;
+    }
+
+    public Long getCodParticipante() {
+        return codParticipante;
+    }
+
+    public void setCodParticipante(Long codParticipante) {
+        this.codParticipante = codParticipante;
     }
 }

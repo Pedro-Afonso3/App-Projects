@@ -16,6 +16,9 @@ public class Redes {
     @Column(name="redes_id")
     private String id;
 
+    @Column(name="CodRedes", unique = true, nullable = false)
+    private Long codRedes;
+
     @Column(name="nome")
     private String nome;
 
@@ -25,5 +28,15 @@ public class Redes {
     @ManyToOne
     @JoinColumn(name="participantes_id",nullable = false)
     private Participantes participantes;
+
+    @PrePersist
+    private void gerarDados() {
+        if (id == null) {
+            this.id = java.util.UUID.randomUUID().toString();
+        }
+        if (codRedes == null) {
+            this.codRedes = (long) (Math.random() * 1_000_000);
+        }
+    }
 
 }

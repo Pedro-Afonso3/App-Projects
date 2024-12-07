@@ -11,6 +11,7 @@ public class ProjetosDTO implements Serializable {
     private String titulo;
     private String descicao;
     private String tecnologias;
+    private Long codProjeto;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<ParticipantesDTO> participantesList;
@@ -46,5 +47,13 @@ public class ProjetosDTO implements Serializable {
 
     public void setParticipantesList(List<ParticipantesDTO> participantesList) {
         this.participantesList = participantesList;
+    }
+
+    public Long getCodProjeto() {
+        return codProjeto;
+    }
+
+    public void setCodProjeto(Long codProjeto) {
+        this.codProjeto = codProjeto;
     }
 }

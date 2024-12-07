@@ -21,6 +21,9 @@ public class Participantes {
     @Column(name="participantes_id")
     private String id;
 
+    @Column(name="CodParticipantes", unique = true, nullable = false)
+    private Long codParticipantes;
+
     @Column(name="nome")
     private String nome;
 
@@ -34,4 +37,14 @@ public class Participantes {
     @OneToMany(mappedBy = "participantes",cascade = CascadeType.ALL)
     @Column(name="projetosList")
     private List<Projetos> projetosList;
+
+    @PrePersist
+    private void gerarDados() {
+        if (id == null) {
+            this.id = java.util.UUID.randomUUID().toString();
+        }
+        if (codParticipantes == null) {
+            this.codParticipantes = (long) (Math.random() * 1_000_000);
+        }
+    }
 }
