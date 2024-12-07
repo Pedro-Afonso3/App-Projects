@@ -7,6 +7,7 @@ import com.app.App_projects.infra.security.TokenService;
 import com.app.App_projects.domain.users.Users;
 import com.app.App_projects.repository.usersRepository;
 
+import com.app.App_projects.services.EmailService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +15,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("auth")
@@ -28,6 +26,8 @@ public class AuthenticationController {
     private usersRepository repository;
     @Autowired
     private TokenService tokenService;
+    @Autowired
+    private EmailService emailService;
 
     @PostMapping("/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
@@ -45,6 +45,10 @@ public class AuthenticationController {
 
         String encrytedPassword = new BCryptPasswordEncoder().encode(data.password());
         Users newUser = new Users(data.login(),encrytedPassword, data.role());
+
+        /*String subject = "Bem-vindo ao nosso serviço!";
+        String text = "Olá " + " name" + ",\n\n Obrigado por se cadastrar no nosso serviço!";
+        emailService.sendEmail(data.login(), subject, text);*/
 
         this.repository.save(newUser);
         return ResponseEntity.ok().build();
