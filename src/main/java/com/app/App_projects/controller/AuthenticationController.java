@@ -41,14 +41,15 @@ public class AuthenticationController {
 
     @PostMapping("/register")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
-        if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
+        //if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
+        if (this.repository.findByLogin(data.getLogin()) != null) { return ResponseEntity.badRequest().body("Erro: Usuário já existe."); }
 
-        String encrytedPassword = new BCryptPasswordEncoder().encode(data.password());
-        Users newUser = new Users(data.login(),encrytedPassword, data.role());
+        String encrytedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
+        Users newUser = new Users(data.getLogin(),encrytedPassword, data.getRole());
 
-        /*String subject = "Bem-vindo ao nosso serviço!";
-        String text = "Olá " + " name" + ",\n\n Obrigado por se cadastrar no nosso serviço!";
-        emailService.sendEmail(data.login(), subject, text);*/
+        String subject = "Bem-vindo ao nosso serviço!";
+        String text = "Olá " + data.getLogin() + ",\n\n Obrigado por se cadastrar no nosso serviço!";
+        emailService.sendEmail(data.getLogin(), subject, text);
 
         this.repository.save(newUser);
         return ResponseEntity.ok().build();
