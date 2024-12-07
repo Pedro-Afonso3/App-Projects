@@ -15,12 +15,6 @@ public class participantesServiceImpl implements participantesService {
     @Autowired
     private participantesRepository repository;
 
-
-    /**@Override
-    public void insertParticipantes(Participantes participantes) {
-        repository.save(participantes);
-    }**/
-
     @Override public void updateParticipantes(UUID id, Participantes participantes) throws Exception {
         Optional<Participantes> participantes1 = repository.findById(id);
 
@@ -80,7 +74,7 @@ public class participantesServiceImpl implements participantesService {
         return participantes;
     }
 
-    //CADASTRAR USER
+    //CADASTRAR PARTICIPANTE
     @Override
     public void insertParticipanteDTO(ParticipantesDTO participantesDTO) {
         // Converte o DTO para a entidade Participantes antes de salvar

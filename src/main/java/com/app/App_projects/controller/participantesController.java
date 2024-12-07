@@ -51,7 +51,7 @@ public class participantesController {
     }
 
     //ATUALIZAR POR ID
-    @Operation(summary = "Atualizar participantes por ID", description = "Atualizar participantes por ID")
+    @Operation(summary = "Atualizar participantes", description = "Atualizar participantes por ID")
     @PutMapping("/updateParticipantes")
     public ResponseEntity<Participantes> updateParticipantes(@PathVariable UUID id,@RequestBody Participantes participantes) throws Exception {
         participantesService.updateParticipantes(id,participantes);
@@ -59,7 +59,7 @@ public class participantesController {
     }
 
     //DELETAR POR ID
-    @Operation(summary = "Deletar participantes por ID", description = "Deletar participantes por ID")
+    @Operation(summary = "Deletar participantes", description = "Deletar participantes por ID")
     @DeleteMapping("/deleteParticipantes")
     public ResponseEntity<Participantes> deleteParticipantes(UUID id){
         participantesService.deleteParticipante(id);

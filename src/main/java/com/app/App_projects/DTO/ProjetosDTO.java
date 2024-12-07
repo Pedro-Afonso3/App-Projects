@@ -1,5 +1,7 @@
 package com.app.App_projects.DTO;
 
+import com.app.App_projects.domain.participantes.Participantes;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
@@ -11,7 +13,7 @@ public class ProjetosDTO implements Serializable {
     private String tecnologias;
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
-    private List<ParticipantesDTO> participantesDTOList;
+    private List<ParticipantesDTO> participantesList;
 
     public String getTitulo() {
         return titulo;
@@ -37,11 +39,12 @@ public class ProjetosDTO implements Serializable {
         this.tecnologias = tecnologias;
     }
 
-    public List<ParticipantesDTO> getParticipantesDTOList() {
-        return participantesDTOList;
+    @JsonIgnore // Oculta na serialização (POST e PUT)
+    public Participantes getParticipantesList() {
+        return (Participantes) participantesList;
     }
 
-    public void setParticipantesDTOList(List<ParticipantesDTO> participantesDTOList) {
-        this.participantesDTOList = participantesDTOList;
+    public void setParticipantesList(List<ParticipantesDTO> participantesList) {
+        this.participantesList = participantesList;
     }
 }
