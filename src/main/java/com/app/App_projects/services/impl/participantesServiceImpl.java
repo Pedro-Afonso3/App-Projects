@@ -1,15 +1,13 @@
 package com.app.App_projects.services.impl;
 
+import com.app.App_projects.DTO.ParticipantesDTO;
 import com.app.App_projects.domain.participantes.Participantes;
 import com.app.App_projects.repository.participantesRepository;
 import com.app.App_projects.services.participantesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 @Service
 public class participantesServiceImpl implements participantesService {
@@ -18,10 +16,10 @@ public class participantesServiceImpl implements participantesService {
     private participantesRepository repository;
 
 
-    @Override
+    /**@Override
     public void insertParticipantes(Participantes participantes) {
         repository.save(participantes);
-    }
+    }**/
 
     @Override public void updateParticipantes(UUID id, Participantes participantes) throws Exception {
         Optional<Participantes> participantes1 = repository.findById(id);
@@ -62,21 +60,63 @@ public class participantesServiceImpl implements participantesService {
         repository.deleteById(id);
     }
 
-    @Override
-    public Iterable<Participantes> showAllParticipantes() {
-        return repository.findAll();
+    // Converte Participantes para ParticipantesDTO
+    private ParticipantesDTO convertToDTO(Participantes participantes) {
+        ParticipantesDTO participantesDTO = new ParticipantesDTO();
+        participantesDTO.setNome(participantes.getNome());
+        participantesDTO.setDescricao(participantes.getDescricao());
+        participantesDTO.setRedesList(participantes.getRedesList());
+        participantesDTO.setProjetosList(participantes.getProjetosList());
+        return participantesDTO;
     }
 
-    @Override
-    public  Optional<Participantes>  showById(UUID id) {
-        Optional<Participantes> resultShowId = repository.findById(id);
-        return  resultShowId;
+    // Converte ParticipantesDTO para Participantes
+    private Participantes convertToEntity(ParticipantesDTO participantesDTO) {
+        Participantes participantes = new Participantes();
+        participantes.setNome(participantesDTO.getNome());
+        participantes.setDescricao(participantesDTO.getDescricao());
+        participantes.setRedesList(participantesDTO.getRedesList());
+        participantes.setProjetosList(participantesDTO.getProjetosList());
+        return participantes;
     }
 
+    //CADASTRAR USER
     @Override
-    public  Optional<Participantes> findByNome(String nome) {
-        Optional<Participantes> resultShowName = repository.findByNome(nome);
-        return resultShowName;
+    public void insertParticipanteDTO(ParticipantesDTO participantesDTO) {
+        // Converte o DTO para a entidade Participantes antes de salvar
+        Participantes participantes = convertToEntity(participantesDTO);
+        repository.save(participantes);
+    }
 
+    //BUSCAR POR TODOS
+    @Override
+    public List<ParticipantesDTO> getAllParticipantesDTO() {
+        return repository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .toList();
+    }
+
+    //BUSCAR POR NOME
+    @Override
+    public  Optional<ParticipantesDTO> findByNome(String nome) {
+        return repository.findByNome(nome)
+                .map(this::convertToDTO);
+    }
+
+    //BUSCAR POR ID
+    @Override
+    public  Optional<ParticipantesDTO>  showById(UUID id) {
+        return repository.findById(id)
+                .map(this::convertToDTO);
+    }
+
+    // Converte lista de Participantes para lista de ParticipantesDTO
+    private Iterable<ParticipantesDTO> convertToDTOList(Iterable<Participantes> participantesList) {
+        List<ParticipantesDTO> participantesDTOList = new ArrayList<>();
+        for (Participantes participantes : participantesList) {
+            participantesDTOList.add(convertToDTO(participantes));
+        }
+        return participantesDTOList;
     }
 }
