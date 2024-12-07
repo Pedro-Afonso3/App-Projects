@@ -47,9 +47,9 @@ public class AuthenticationController {
         String encrytedPassword = new BCryptPasswordEncoder().encode(data.getPassword());
         Users newUser = new Users(data.getLogin(),encrytedPassword, data.getRole());
 
-        String subject = "Bem-vindo ao nosso serviço!";
+        /**String subject = "Bem-vindo ao nosso serviço!";
         String text = "Olá " + data.getLogin() + ",\n\n Obrigado por se cadastrar no nosso serviço!";
-        emailService.sendEmail(data.getLogin(), subject, text);
+        emailService.sendEmail(data.getLogin(), subject, text);**/
 
         this.repository.save(newUser);
         return ResponseEntity.ok().build();
