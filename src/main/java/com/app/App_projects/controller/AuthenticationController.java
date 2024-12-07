@@ -8,6 +8,7 @@ import com.app.App_projects.domain.users.Users;
 import com.app.App_projects.repository.usersRepository;
 
 import com.app.App_projects.services.EmailService;
+import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class AuthenticationController {
     private EmailService emailService;
 
     @PostMapping("/login")
+    @Operation(summary = "Login", description = "Realização de login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO data){
         var usernamePassword =new UsernamePasswordAuthenticationToken(data.login(),data.password());
         var auth = this.authenticationManager.authenticate(usernamePassword);
@@ -42,6 +44,7 @@ public class AuthenticationController {
     }
 
     @PostMapping("/register")
+    @Operation(summary = "Cadastro de User", description = "Cadastro de novo User")
     public ResponseEntity register(@RequestBody @Valid RegisterDTO data){
         //if(this.repository.findByLogin(data.login()) != null) return ResponseEntity.badRequest().build();
         if (this.repository.findByLogin(data.getLogin()) != null) { return ResponseEntity.badRequest().body("Erro: Usuário já existe."); }
