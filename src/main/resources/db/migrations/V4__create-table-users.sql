@@ -1,5 +1,5 @@
 CREATE TABLE users(
-    id UUID PRIMARY KEY NOT NULL,
+    id CHAR(40) PRIMARY KEY NOT NULL DEFAULT (UUID()),
     login VARCHAR(40),
     password VARCHAR(40)
 )

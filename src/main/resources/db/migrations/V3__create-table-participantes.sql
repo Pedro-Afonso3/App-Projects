@@ -1,5 +1,5 @@
 CREATE TABLE participantes(
-    id UUID PRIMARY KEY NOT NULL,
+    id CHAR(40) PRIMARY KEY NOT NULL DEFAULT (UUID()),
     nome VARCHAR(70) NOT NULL,
     descricao VARCHAR(200) NOT NULL,
     projetos_id UUID,
