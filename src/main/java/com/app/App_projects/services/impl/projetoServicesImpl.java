@@ -53,6 +53,7 @@ public class projetoServicesImpl implements projetoService {
     //Converte Projetos para ProjetosDTO
     private ProjetosDTO convertToDTO(Projetos projetos){
         ProjetosDTO projetosDTO = new ProjetosDTO();
+        projetosDTO.setId(projetos.getId());
         projetosDTO.setTitulo(projetos.getTitulo());
         projetosDTO.setDescicao(projetos.getDescricao());
         projetosDTO.setTecnologias(projetos.getTecnologias());
@@ -63,6 +64,7 @@ public class projetoServicesImpl implements projetoService {
     //Converte ProjetosDTO para Projetos
     private Projetos convertToEntity(ProjetosDTO projetosDTO){
         Projetos projetos = new Projetos();
+        projetos.setId(projetosDTO.getId());
         projetos.setTitulo(projetosDTO.getTitulo());
         projetos.setDescricao(projetosDTO.getDescicao());
         projetos.setTecnologias(projetosDTO.getTecnologias());
