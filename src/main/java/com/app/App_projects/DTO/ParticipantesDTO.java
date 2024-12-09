@@ -10,6 +10,7 @@ import java.util.List;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParticipantesDTO implements Serializable {
+    private String id;
     private String nome;
     private String descricao;
     private Long codParticipante;
@@ -18,6 +19,14 @@ public class ParticipantesDTO implements Serializable {
     private List<Projetos> projetosList;
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Redes> redesList;
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getNome() {
         return nome;

@@ -3,11 +3,14 @@ package com.app.App_projects.DTO;
 import com.app.App_projects.domain.participantes.Participantes;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
 
 public class ProjetosDTO implements Serializable {
+    private String id;
     private String titulo;
     private String descicao;
     private String tecnologias;
@@ -15,6 +18,14 @@ public class ProjetosDTO implements Serializable {
 
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<ParticipantesDTO> participantesList;
+
+    public String getId(){
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;
