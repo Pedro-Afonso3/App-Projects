@@ -18,7 +18,7 @@ public interface projetoService {
 
     List<Projetos> showAllProjetos();
 
-    Optional<Projetos> showById(UUID id);
+    Optional<Projetos> findById(UUID id);
 
     Optional<Projetos> findByTitulo(String titulo);
 }

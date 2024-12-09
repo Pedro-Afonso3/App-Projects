@@ -59,9 +59,9 @@ public class projetoServicesImpl implements projetoService {
     }
 
     @Override
-    public Optional<Projetos> showById(UUID id) {
+    public Optional<Projetos> findById(UUID id) {
         Optional<Projetos> resultShowId = repository.findById(id);
-        return  resultShowId;
+        return resultShowId;
     }
 
     @Override

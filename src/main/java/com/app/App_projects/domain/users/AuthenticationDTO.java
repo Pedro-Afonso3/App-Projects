@@ -1,4 +1,15 @@
 package com.app.App_projects.domain.users;
 
-public record AuthenticationDTO(String login , String password) {
+public class AuthenticationDTO{
+
+    private String login;
+    private String password;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
 }

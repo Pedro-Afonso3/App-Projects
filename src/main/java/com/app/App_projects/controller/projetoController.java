@@ -20,9 +20,9 @@ public class projetoController {
         return ResponseEntity.ok(projetoService.showAllProjetos());
     }
 
-    @GetMapping("/showById")
-    public ResponseEntity<Optional<Projetos>> showById(@PathVariable UUID id){
-        return ResponseEntity.ok(projetoService.showById(id));
+    @GetMapping("/findById")
+    public ResponseEntity<Optional<Projetos>> findById(@PathVariable UUID id){
+        return ResponseEntity.ok(projetoService.findById(id));
     }
 
     @GetMapping("/findByTitulo")
