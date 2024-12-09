@@ -1,4 +1,6 @@
 package com.app.App_projects.DTO;
 
-public class RedesDTO {
+import java.io.Serializable;
+
+public class RedesDTO implements Serializable {
 }
