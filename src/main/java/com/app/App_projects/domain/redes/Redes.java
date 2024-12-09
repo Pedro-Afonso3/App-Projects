@@ -26,7 +26,7 @@ public class Redes {
     private String linkRedes;
 
     @ManyToOne
-    @JoinColumn(name="participantes_id",nullable = false)
+    @JoinColumn(name="participantes_id")
     private Participantes participantes;
 
     @PrePersist
