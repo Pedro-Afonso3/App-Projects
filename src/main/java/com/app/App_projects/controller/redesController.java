@@ -27,9 +27,9 @@ public class redesController {
         return ResponseEntity.ok(redesService.showById(id));
     }
 
-    @GetMapping("/findByName")
-    public ResponseEntity<Optional<Redes>> findByName(String name){
-        return ResponseEntity.ok(redesService.findByName(name));
+    @GetMapping("/findByNome")
+    public ResponseEntity<Optional<Redes>> findByNome(String nome){
+        return ResponseEntity.ok(redesService.findByNome(nome));
     }
 
     @PutMapping("/updateParticipantes")

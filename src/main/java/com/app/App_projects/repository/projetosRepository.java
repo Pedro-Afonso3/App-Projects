@@ -10,5 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface projetosRepository extends JpaRepository<Projetos, UUID> {
+
     Optional<Projetos> findByTitulo(String titulo);
 }

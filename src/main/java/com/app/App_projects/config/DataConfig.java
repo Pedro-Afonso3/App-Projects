@@ -11,15 +11,15 @@ import javax.sql.DataSource;
 
 @Configuration
 public class DataConfig {
-   @Bean
-        DataSource dataSource() {
-            DriverManagerDataSource dataSource = new DriverManagerDataSource();
-            dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-            dataSource.setUrl("jdbc:mysql://localhost:3306/app_projects?useTimezone=true&serverTimezone=UTC");
-            dataSource.setUsername("root");
-            dataSource.setPassword("12345");
-            return (DataSource) dataSource;
-        }
+    @Bean
+    DataSource dataSource() {
+        DriverManagerDataSource dataSource = new DriverManagerDataSource();
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setUrl("jdbc:mysql://localhost:3306/app_projects?useTimezone=true&serverTimezone=UTC");
+        dataSource.setUsername("root");
+        dataSource.setPassword("12345");
+        return dataSource; // Sem o cast
+    }
 
         @Bean
         JpaVendorAdapter jpaVendorAdapter() {

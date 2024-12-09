@@ -23,5 +23,5 @@ public interface redesService {
 
     Optional<Redes> showById(UUID id);
 
-    Optional<Redes> findByName(String name);
+    Optional<Redes> findByNome(String nome);
 }

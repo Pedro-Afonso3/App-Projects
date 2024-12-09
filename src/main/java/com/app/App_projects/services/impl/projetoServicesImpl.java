@@ -1,5 +1,7 @@
 package com.app.App_projects.services.impl;
 
+import com.app.App_projects.DTO.ParticipantesDTO;
+import com.app.App_projects.DTO.ProjetosDTO;
 import com.app.App_projects.domain.projetos.Projetos;
 import com.app.App_projects.repository.projetosRepository;
 import com.app.App_projects.services.projetoService;
@@ -15,11 +17,6 @@ public class projetoServicesImpl implements projetoService {
 
     @Autowired
     private projetosRepository repository;
-
-    @Override
-    public void insertProjeto(Projetos projetos) {
-        repository.save(projetos);
-    }
 
     @Override
     public void updateProjeto(UUID id, Projetos projetos) throws Exception {
@@ -52,21 +49,54 @@ public class projetoServicesImpl implements projetoService {
         repository.deleteById(id);
     }
 
-    @Override
-    public List<Projetos> showAllProjetos() {
-        List<Projetos> resultShowAll = repository.findAll();
-        return resultShowAll;
+
+    //Converte Projetos para ProjetosDTO
+    private ProjetosDTO convertToDTO(Projetos projetos){
+        ProjetosDTO projetosDTO = new ProjetosDTO();
+        projetosDTO.setTitulo(projetos.getTitulo());
+        projetosDTO.setDescicao(projetos.getDescricao());
+        projetosDTO.setTecnologias(projetos.getTecnologias());
+        projetosDTO.setParticipantesList((List<ParticipantesDTO>) projetos.getParticipantes());
+        return projetosDTO;
     }
 
-    @Override
-    public Optional<Projetos> showById(UUID id) {
-        Optional<Projetos> resultShowId = repository.findById(id);
-        return  resultShowId;
+    //Converte ProjetosDTO para Projetos
+    private Projetos convertToEntity(ProjetosDTO projetosDTO){
+        Projetos projetos = new Projetos();
+        projetos.setTitulo(projetosDTO.getTitulo());
+        projetos.setDescricao(projetosDTO.getDescicao());
+        projetos.setTecnologias(projetosDTO.getTecnologias());
+        projetos.setParticipantes(projetosDTO.getParticipantesList());
+        return projetos;
     }
 
+    //CADASTRAR PROJETO
     @Override
-    public Optional<Projetos> findByTitulo(String titulo) {
-        Optional<Projetos> resultShowTitulo = repository.findByTitulo(titulo);
-        return resultShowTitulo;
+    public void insertProjeto(ProjetosDTO projetosDTO) {
+        Projetos projetos = convertToEntity(projetosDTO);
+        repository.save(projetos);
+    }
+
+    //BUSCAR POR TODOS
+    @Override
+    public List<ProjetosDTO> showAllProjetos() {
+        return repository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .toList();
+    }
+
+    //BUSCAR POR ID
+    @Override
+    public Optional<ProjetosDTO> showById(UUID id) {
+        return repository.findById(id)
+                .map(this::convertToDTO);
+    }
+
+    //BUSCAR POR TITULO
+    @Override
+    public Optional<ProjetosDTO> findByTitulo(String titulo) {
+        return  repository.findByTitulo(titulo)
+                .map(this::convertToDTO);
     }
 }

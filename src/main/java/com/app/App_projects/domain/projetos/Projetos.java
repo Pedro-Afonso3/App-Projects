@@ -9,14 +9,15 @@ import lombok.*;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Builder
 @Setter
-@EqualsAndHashCode(of = "id")// Provavelmente não precisa
 public class Projetos {
-
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(name="projetos_id")
     private String id;
+
+    @Column(name="CodProjeto", unique = true, nullable = false)
+    private Long codProjeto;
 
     @Column(name="titulo")
     private String titulo;
@@ -30,4 +31,14 @@ public class Projetos {
     @ManyToOne
     @JoinColumn(name="participantes_id")
     private Participantes participantes;
+
+    @PrePersist
+    private void gerarDados() {
+        if (id == null) {
+            this.id = java.util.UUID.randomUUID().toString();
+        }
+        if (codProjeto == null) {
+            this.codProjeto = (long) (Math.random() * 1_000_000);
+        }
+    }
 }
