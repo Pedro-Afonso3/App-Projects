@@ -6,4 +6,4 @@ CREATE TABLE participantes(
     redes_id UUID,
     FOREIGN KEY (projetos_id) REFERENCES projetos(id),
     FOREIGN KEY (redes_id) REFERENCES redes(id)
-)
+);

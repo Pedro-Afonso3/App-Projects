@@ -1,5 +1,5 @@
 CREATE TABLE redes(
-    id UUID PRIMARY KEY NOT NULL,
+    id UUID PRIMARY KEY,
     nome VARCHAR(200) NOT NULL,
     linkRedes VARCHAR(200) NOT NULL
-)
+);
