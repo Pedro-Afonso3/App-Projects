@@ -1,5 +1,5 @@
 CREATE TABLE redes(
-    id CHAR(40) PRIMARY KEY NOT NULL DEFAULT (UUID()),
+    id UUID PRIMARY KEY NOT NULL DEFAULT gen_random_uuid(),
     nome VARCHAR(200) NOT NULL,
     linkRedes VARCHAR(200) NOT NULL
 )
