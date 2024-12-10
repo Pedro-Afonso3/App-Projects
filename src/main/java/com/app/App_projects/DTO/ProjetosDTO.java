@@ -8,9 +8,10 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 public class ProjetosDTO implements Serializable {
-    private String id;
+    private UUID id;
     private String titulo;
     private String descicao;
     private String tecnologias;
@@ -19,11 +20,11 @@ public class ProjetosDTO implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<ParticipantesDTO> participantesList;
 
-    public String getId(){
+    public UUID getId(){
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

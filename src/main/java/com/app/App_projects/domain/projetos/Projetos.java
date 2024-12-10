@@ -4,6 +4,8 @@ import com.app.App_projects.domain.participantes.Participantes;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name="projetos")
 @Getter
@@ -14,7 +16,7 @@ public class Projetos {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="projetos_id")
-    private String id;
+    private UUID id;
 
     @Column(name="CodProjeto", unique = true, nullable = false)
     private Long codProjeto;
@@ -35,7 +37,7 @@ public class Projetos {
     @PrePersist
     private void gerarDados() {
         if (id == null) {
-            this.id = java.util.UUID.randomUUID().toString();
+            this.id = java.util.UUID.randomUUID();
         }
         if (codProjeto == null) {
             this.codProjeto = (long) (Math.random() * 1_000_000);

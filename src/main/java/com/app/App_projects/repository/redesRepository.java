@@ -11,4 +11,6 @@ import java.util.UUID;
 public interface redesRepository extends JpaRepository<Redes,UUID> {
 
     Optional<Redes> findByNome(String nome);
+
+
 }

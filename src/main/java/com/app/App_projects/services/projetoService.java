@@ -19,7 +19,7 @@ public interface projetoService {
 
     List<ProjetosDTO> showAllProjetos();
 
-    Optional<ProjetosDTO> showById(UUID id);
+    Optional<ProjetosDTO> findById(UUID id);
 
     Optional<ProjetosDTO> findByTitulo(String titulo);
 }

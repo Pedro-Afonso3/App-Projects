@@ -1,6 +1,7 @@
 package com.app.App_projects.services.impl;
 
-import com.app.App_projects.domain.projetos.Projetos;
+import com.app.App_projects.DTO.ParticipantesDTO;
+import com.app.App_projects.DTO.RedesDTO;
 import com.app.App_projects.domain.redes.Redes;
 import com.app.App_projects.repository.redesRepository;
 import com.app.App_projects.services.redesService;
@@ -18,8 +19,31 @@ public class redesServiceImpl implements redesService {
     private redesRepository repository;
 
     @Override
-    public void insertRedes(Redes redes) {
+    public void insertRedes(RedesDTO redesDTO) {
+        Redes redes = convertToEntity(redesDTO);
         repository.save(redes);
+    }
+
+    //Convert RedesDTO to Redes
+    private Redes convertToEntity(RedesDTO redesDTO) {
+        Redes redes = new Redes();
+        redes.setId((redesDTO.getId()));
+        redes.setNome(redesDTO.getNome());
+        redes.setLinkRedes(redesDTO.getLinkRedes());
+        redes.setCodRedes(redesDTO.getCodRedes());
+        redes.setParticipantes(redesDTO.getParticipantesList());
+        return redes;
+    }
+
+    //Converte Projetos para ProjetosDTO
+    private RedesDTO convertToDTO(Redes redes){
+        RedesDTO redesDTO = new RedesDTO();
+        redesDTO.setId(redes.getId());
+        redesDTO.setNome(redes.getNome());
+        redesDTO.setLinkRedes(redes.getLinkRedes());
+        redesDTO.setCodRedes(redes.getCodRedes());
+        redesDTO.setParticipantesList((List<ParticipantesDTO>) redes.getParticipantes());
+        return redesDTO;
     }
 
     @Override
@@ -50,20 +74,22 @@ public class redesServiceImpl implements redesService {
     }
 
     @Override
-    public List<Redes> showAllRedes() {
-        List<Redes> resultShowAll = repository.findAll();
-        return resultShowAll;
+    public List<RedesDTO> showAllRedes() {
+        return repository.findAll()
+                .stream()
+                .map(this::convertToDTO)
+                .toList();
     }
 
     @Override
-    public Optional<Redes> showById(UUID id) {
-        Optional<Redes> resultShowId = repository.findById(id);
-        return  resultShowId;
+    public Optional<RedesDTO> findById(UUID id) {
+        return repository.findById(id)
+                .map(this::convertToDTO);
     }
 
     @Override
-    public Optional<Redes> findByNome(String nome) {
-        Optional<Redes> resultShowName = repository.findByNome(nome);
-        return resultShowName;
+    public Optional<RedesDTO> findByNome(String nome) {
+        return  repository.findByNome(nome)
+                .map(this::convertToDTO);
     }
 }

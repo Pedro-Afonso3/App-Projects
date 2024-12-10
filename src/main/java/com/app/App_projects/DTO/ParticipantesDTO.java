@@ -7,10 +7,11 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ParticipantesDTO implements Serializable {
-    private String id;
+    private UUID id;
     private String nome;
     private String descricao;
     private Long codParticipante;
@@ -20,11 +21,11 @@ public class ParticipantesDTO implements Serializable {
     @JsonInclude(JsonInclude.Include.NON_EMPTY)
     private List<Redes> redesList;
 
-    public String getId(){
+    public UUID getId(){
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

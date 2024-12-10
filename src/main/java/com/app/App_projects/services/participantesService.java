@@ -14,11 +14,11 @@ public interface participantesService {
 
     void deleteParticipante(UUID id);
 
-    Optional<ParticipantesDTO> showById(UUID id);
+    Optional<ParticipantesDTO> findById(UUID id);
 
     Optional<ParticipantesDTO> findByNome(String nome);
 
     void insertParticipanteDTO(ParticipantesDTO participantesDTO);
 
-    List<ParticipantesDTO> getAllParticipantesDTO();
+    List<ParticipantesDTO> getAllParticipantes();
 }

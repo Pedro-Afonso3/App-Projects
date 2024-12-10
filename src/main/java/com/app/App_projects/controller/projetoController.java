@@ -36,13 +36,13 @@ public class projetoController {
     }
 
     //BUSCA POR ID
-    @GetMapping("/showById")
+    @GetMapping("/findById")
     @Operation(summary = "Consultar por ID", description = "Consultar os projetos por ID")
-    public ResponseEntity<Optional<ProjetosDTO>> showById(@PathVariable UUID id){
-        return ResponseEntity.ok(projetoService.showById(id));
+    public ResponseEntity<Optional<ProjetosDTO>> findById(UUID id){
+        return ResponseEntity.ok(projetoService.findById(id));
     }
 
-    //BUSCAR POR ID
+    //BUSCAR POR Titulo
     @GetMapping("/findByTitulo")
     @Operation(summary = "Consultar por ID", description = "Consultar os projetos por ID")
     public ResponseEntity<Optional<ProjetosDTO>> findByTitulo(String titulo){
@@ -59,7 +59,7 @@ public class projetoController {
 
     //DELETAR POR ID
     @DeleteMapping("/deleteProjetos")
-    @Operation(summary = "Deletrar Projetos", description = "Deletar projetos por ID")
+    @Operation(summary = "Deletar Projetos", description = "Deletar projetos por ID")
     public ResponseEntity<Projetos> deleteProjeto(UUID id){
         projetoService.deleteProjeto(id);
         return ResponseEntity.ok().build();

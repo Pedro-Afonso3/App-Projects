@@ -90,7 +90,7 @@ public class projetoServicesImpl implements projetoService {
 
     //BUSCAR POR ID
     @Override
-    public Optional<ProjetosDTO> showById(UUID id) {
+    public Optional<ProjetosDTO> findById(UUID id) {
         return repository.findById(id)
                 .map(this::convertToDTO);
     }

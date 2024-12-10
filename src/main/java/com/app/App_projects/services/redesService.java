@@ -1,5 +1,6 @@
 package com.app.App_projects.services;
 
+import com.app.App_projects.DTO.RedesDTO;
 import com.app.App_projects.domain.projetos.Projetos;
 import com.app.App_projects.domain.redes.Redes;
 import com.app.App_projects.repository.redesRepository;
@@ -13,15 +14,15 @@ import java.util.UUID;
 
 public interface redesService {
 
-    void insertRedes(Redes redes);
+    void insertRedes(RedesDTO redesDTO);
 
     void updateRedes(UUID id, Redes redes) throws Exception;
 
     void deleteRedes(UUID id);
 
-    List<Redes> showAllRedes();
+    List<RedesDTO> showAllRedes();
 
-    Optional<Redes> showById(UUID id);
+    Optional<RedesDTO> findById(UUID id);
 
-    Optional<Redes> findByNome(String nome);
+    Optional<RedesDTO> findByNome(String nome);
 }

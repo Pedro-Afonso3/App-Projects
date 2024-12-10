@@ -6,6 +6,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.List;
+import java.util.UUID;
 
 @Entity
 @Table(name="participantes")
@@ -19,7 +20,7 @@ public class Participantes {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name="participantes_id")
-    private String id;
+    private UUID id;
 
     @Column(name="CodParticipantes", unique = true, nullable = false)
     private Long codParticipantes;
@@ -41,7 +42,7 @@ public class Participantes {
     @PrePersist
     private void gerarDados() {
         if (id == null) {
-            this.id = java.util.UUID.randomUUID().toString();
+            this.id = java.util.UUID.randomUUID();
         }
         if (codParticipantes == null) {
             this.codParticipantes = (long) (Math.random() * 1_000_000);

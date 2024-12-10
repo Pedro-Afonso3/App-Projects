@@ -84,7 +84,7 @@ public class participantesServiceImpl implements participantesService {
 
     //BUSCAR POR TODOS
     @Override
-    public List<ParticipantesDTO> getAllParticipantesDTO() {
+    public List<ParticipantesDTO> getAllParticipantes() {
         return repository.findAll()
                 .stream()
                 .map(this::convertToDTO)
@@ -100,7 +100,7 @@ public class participantesServiceImpl implements participantesService {
 
     //BUSCAR POR ID
     @Override
-    public  Optional<ParticipantesDTO>  showById(UUID id) {
+    public  Optional<ParticipantesDTO> findById(UUID id) {
         return repository.findById(id)
                 .map(this::convertToDTO);
     }

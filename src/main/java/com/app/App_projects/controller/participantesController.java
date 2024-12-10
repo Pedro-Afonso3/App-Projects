@@ -33,7 +33,7 @@ public class participantesController {
     @Operation(summary = "Consultar todos", description = "Consultar todos participantes")
     @GetMapping("/showAll")
     public ResponseEntity<Iterable<ParticipantesDTO>> getAllParticipantes(){
-        return ResponseEntity.ok(participantesService.getAllParticipantesDTO());
+        return ResponseEntity.ok(participantesService.getAllParticipantes());
     }
 
     //BUSCAR POR NOME
@@ -45,9 +45,9 @@ public class participantesController {
 
     //BUSCAR POR ID
     @Operation(summary = "Consultar participantes por ID", description = "Consultar participantes por ID")
-    @GetMapping("/showById")
-    public ResponseEntity<Optional<ParticipantesDTO>> showById(@PathVariable UUID id){
-        return ResponseEntity.ok(participantesService.showById(id));
+    @GetMapping("/findById")
+    public ResponseEntity<Optional<ParticipantesDTO>> findById(UUID id){
+        return ResponseEntity.ok(participantesService.findById(id));
     }
 
     //ATUALIZAR POR ID
