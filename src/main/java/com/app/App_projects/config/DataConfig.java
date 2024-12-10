@@ -14,8 +14,10 @@ public class DataConfig {
     @Bean
     DataSource dataSource() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
-        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        dataSource.setUrl("jdbc:mysql://localhost:3307/AppProjects");
+        //dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+        dataSource.setDriverClassName("org.postgresql.Driver");
+        //dataSource.setUrl("jdbc:mysql://localhost:3307/AppProjects");
+        dataSource.setUrl("jdbc:postgresql://localhost:5432/AppProjects");
         dataSource.setUsername("Pedro");
         dataSource.setPassword("pedro999");
         return dataSource; // Sem o cast
@@ -27,7 +29,8 @@ public class DataConfig {
             adapter.setDatabase(Database.MYSQL);
             adapter.setShowSql(true);
             adapter.setGenerateDdl(true);
-            adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+            //adapter.setDatabasePlatform("org.hibernate.dialect.MySQLDialect");
+            adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
             adapter.setPrepareConnection(true);
             return adapter;
         }
