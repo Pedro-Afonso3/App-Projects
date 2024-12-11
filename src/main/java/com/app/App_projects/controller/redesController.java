@@ -39,9 +39,9 @@ public class redesController {
         return ResponseEntity.ok(redesService.findByNome(nome));
     }
 
-    @PutMapping("/updateParticipantes")
+    @PutMapping("/updateRedes")
     @Operation(summary = "Atualizar Redes", description = "Atualizar uma rede")
-    public ResponseEntity<Redes> updateParticipantes(@PathVariable UUID id,@RequestBody Redes redes) throws Exception {
+    public ResponseEntity<Redes> updateParticipantes(UUID id,@RequestBody Redes redes) throws Exception {
         redesService.updateRedes(id,redes);
         return ResponseEntity.ok(redes);
     }

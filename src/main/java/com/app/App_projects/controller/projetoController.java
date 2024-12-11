@@ -52,7 +52,7 @@ public class projetoController {
     //ATUALIZAR POR ID
     @PutMapping("/updateProjetos")
     @Operation(summary = "Atualizar Projetos", description = "Atualizar projetos por ID")
-    public ResponseEntity<Projetos> updateProjeto(@PathVariable UUID id,@RequestBody Projetos projetos) throws Exception {
+    public ResponseEntity<Projetos> updateProjeto(UUID id,@RequestBody Projetos projetos) throws Exception {
         projetoService.updateProjeto(id,projetos);
         return ResponseEntity.ok(projetos);
     }

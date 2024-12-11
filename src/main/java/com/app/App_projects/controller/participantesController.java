@@ -53,7 +53,7 @@ public class participantesController {
     //ATUALIZAR POR ID
     @Operation(summary = "Atualizar participantes", description = "Atualizar participantes por ID")
     @PutMapping("/updateParticipantes")
-    public ResponseEntity<Participantes> updateParticipantes(@PathVariable UUID id,@RequestBody Participantes participantes) throws Exception {
+    public ResponseEntity<Participantes> updateParticipantes(UUID id,@RequestBody Participantes participantes) throws Exception {
         participantesService.updateParticipantes(id,participantes);
         return ResponseEntity.ok(participantes);
     }
