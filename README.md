@@ -22,7 +22,7 @@ Api para um site onde estarão os portfólios dos participantes na criação do 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 Basta colocar esse comando git na pasta onde você deseja clonar o repositório
 ```
-git pull https://github.com/Pedro-Afonso3/App-Projects.git
+git clone https://github.com/Pedro-Afonso3/App-Projects.git
 ```
 
 ### 📋 Pré-requisitos
