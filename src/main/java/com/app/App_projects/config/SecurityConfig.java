@@ -30,8 +30,10 @@ public class SecurityConfig {
                         .requestMatchers("/swagger-ui/*", "/v3/api-docs/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/projetos").hasRole("ADMIN")
-                        .requestMatchers(HttpMethod.POST, "/participantes").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/projetos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/participantes").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/projetos/**").permitAll()
+
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)

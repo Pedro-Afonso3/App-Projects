@@ -2,7 +2,6 @@ package com.app.App_projects.services;
 
 import com.app.App_projects.DTO.ProjetosDTO;
 import com.app.App_projects.domain.projetos.Projetos;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
@@ -22,4 +21,6 @@ public interface projetoService {
     Optional<ProjetosDTO> findById(UUID id);
 
     Optional<ProjetosDTO> findByTitulo(String titulo);
+
+    Optional<ProjetosDTO> buscarPorLinguagem(String tecnologias);
 }

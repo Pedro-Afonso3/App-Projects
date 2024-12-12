@@ -101,4 +101,11 @@ public class projetoServicesImpl implements projetoService {
         return  repository.findByTitulo(titulo)
                 .map(this::convertToDTO);
     }
+
+    @Override
+    public Optional<ProjetosDTO> buscarPorLinguagem(String tecnologias) {
+        return repository.findByTecnologias(tecnologias)
+                .map(this::convertToDTO);
+    }
+
 }

@@ -18,8 +18,10 @@ public class DataConfig {
         dataSource.setDriverClassName("org.postgresql.Driver");
         //dataSource.setUrl("jdbc:mysql://localhost:3307/AppProjects");
         dataSource.setUrl("jdbc:postgresql://localhost:5432/AppProjects");
-        dataSource.setUsername("Pedro");
-        dataSource.setPassword("pedro999");
+        //dataSource.setUsername("Pedro");
+        //dataSource.setPassword("pedro999");
+        dataSource.setUsername("postgres");
+        dataSource.setPassword("12345");
         return dataSource; // Sem o cast
     }
 

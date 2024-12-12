@@ -7,8 +7,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -44,7 +47,7 @@ public class projetoController {
 
     //BUSCAR POR Titulo
     @GetMapping("/findByTitulo")
-    @Operation(summary = "Consultar por ID", description = "Consultar os projetos por ID")
+    @Operation(summary = "Consultar por titulo", description = "Consultar os projetos por titulo")
     public ResponseEntity<Optional<ProjetosDTO>> findByTitulo(String titulo){
         return ResponseEntity.ok(projetoService.findByTitulo(titulo));
     }
@@ -64,4 +67,13 @@ public class projetoController {
         projetoService.deleteProjeto(id);
         return ResponseEntity.ok().build();
     }
+
+    //PARA PUXAR NO THYMELEAF -- Linguagem
+    @GetMapping("/listarProjetos")
+    public String listarProjetos(ModelMap model) {
+        model.addAttribute("projects", projetoService.showAllProjetos()); // Adiciona os projetos ao modelo
+        return "templates/projetos.html"; //Vou validar pq não está puxando o arquivo para relação
+        }
+
+
 }

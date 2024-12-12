@@ -1,0 +1,25 @@
+<!--Documento em HTML criado para leitura do Thymeleaf, pois o HTML encaminhado pode quebrar e precisa de ajustes como criação de forms
+Então resolvi criar este arquivo para testar, meu problema esta na leitura do controler para o HTML já que está no padrão-->
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Projetos</title>
+    <link rel="stylesheet" href="/assets/css/style.css"> <!-- Ajuste o caminho do CSS -->
+</head>
+<body>
+<h1>Lista de Projetos</h1>
+<div class="projects">
+    <!-- Itera sobre a lista de projetos -->
+    <div th:each="project : ${projects}" class="project">
+        <h2 th:text="${project.titulo}">Título do Projeto</h2>
+        <p th:text="${project.descricao}">Descrição do projeto</p>
+        <p>
+            <strong>Tecnologias:</strong>
+            <span th:text="${project.tecnologias}">Tecnologias do projeto</span>
+        </p>
+    </div>
+</div>
+</body>
+</html>

@@ -13,6 +13,7 @@ import java.util.UUID;
 public interface projetosRepository extends JpaRepository<Projetos, UUID> {
 
     Optional<Projetos> findByTitulo(String titulo);
+    Optional<Projetos> findByTecnologias(String tecnologias);
 
 
 }
