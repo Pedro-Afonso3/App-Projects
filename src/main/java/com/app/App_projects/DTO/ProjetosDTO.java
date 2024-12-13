@@ -13,7 +13,7 @@ import java.util.UUID;
 public class ProjetosDTO implements Serializable {
     private UUID id;
     private String titulo;
-    private String descicao;
+    private String descricao;
     private String tecnologias;
     private Long codProjeto;
 
@@ -36,12 +36,12 @@ public class ProjetosDTO implements Serializable {
         this.titulo = titulo;
     }
 
-    public String getDescicao() {
-        return descicao;
+    public String getDescricao() {
+        return descricao;
     }
 
-    public void setDescicao(String descicao) {
-        this.descicao = descicao;
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
     }
 
     public String getTecnologias() {

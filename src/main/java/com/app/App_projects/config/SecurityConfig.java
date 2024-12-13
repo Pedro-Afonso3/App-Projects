@@ -33,6 +33,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.GET, "/projetos/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/participantes").permitAll()
                         .requestMatchers(HttpMethod.POST, "/projetos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/listarProjetos").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/teste").permitAll()
 
                         .anyRequest().authenticated()
                 )

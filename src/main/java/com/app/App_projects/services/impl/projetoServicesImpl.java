@@ -55,7 +55,7 @@ public class projetoServicesImpl implements projetoService {
         ProjetosDTO projetosDTO = new ProjetosDTO();
         projetosDTO.setId(projetos.getId());
         projetosDTO.setTitulo(projetos.getTitulo());
-        projetosDTO.setDescicao(projetos.getDescricao());
+        projetosDTO.setDescricao(projetos.getDescricao());
         projetosDTO.setTecnologias(projetos.getTecnologias());
         projetosDTO.setParticipantesList((List<ParticipantesDTO>) projetos.getParticipantes());
         return projetosDTO;
@@ -66,7 +66,7 @@ public class projetoServicesImpl implements projetoService {
         Projetos projetos = new Projetos();
         projetos.setId(projetosDTO.getId());
         projetos.setTitulo(projetosDTO.getTitulo());
-        projetos.setDescricao(projetosDTO.getDescicao());
+        projetos.setDescricao(projetosDTO.getDescricao());
         projetos.setTecnologias(projetosDTO.getTecnologias());
         projetos.setParticipantes(projetosDTO.getParticipantesList());
         return projetos;

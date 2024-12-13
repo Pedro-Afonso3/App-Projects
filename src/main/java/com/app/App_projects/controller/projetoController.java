@@ -10,7 +10,9 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -22,6 +24,8 @@ public class projetoController {
 
     @Autowired
     private projetoService projetoService;
+
+    List<ProjetosDTO> projetosDTOList = new ArrayList<>();
 
     //CADASTRO PROJETO
     @PostMapping("/insertProjetos")
@@ -69,11 +73,6 @@ public class projetoController {
     }
 
     //PARA PUXAR NO THYMELEAF -- Linguagem
-    @GetMapping("/listarProjetos")
-    public String listarProjetos(ModelMap model) {
-        model.addAttribute("projects", projetoService.showAllProjetos()); // Adiciona os projetos ao modelo
-        return "templates/projetos.html"; //Vou validar pq não está puxando o arquivo para relação
-        }
 
 
 }
